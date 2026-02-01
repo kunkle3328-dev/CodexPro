@@ -1,0 +1,8 @@
+{
+  "name": "CodexPro AI Coach",
+  "description": "A live conversational AI coding coach that helps you write, debug, and optimize code in real-time using voice and text.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

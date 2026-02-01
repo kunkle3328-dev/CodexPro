@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CodexPro | Autonomous AI Cockpit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --accent: #00fff7;
+          --accent-rgb: 0, 255, 247;
+          --bg-deep: #0f111a;
+          --bg-card: rgba(255, 255, 255, 0.02);
+          --glow: rgba(0, 255, 247, 0.2);
+        }
+
+        body.theme-MATRIX-GREEN {
+          --accent: #00ff41;
+          --accent-rgb: 0, 255, 65;
+          --bg-deep: #000a02;
+          --bg-card: rgba(0, 255, 65, 0.03);
+          --glow: rgba(0, 255, 65, 0.2);
+        }
+
+        body.theme-SOLAR-FLARE {
+          --accent: #f59e0b;
+          --accent-rgb: 245, 158, 11;
+          --bg-deep: #0d0900;
+          --bg-card: rgba(245, 158, 11, 0.03);
+          --glow: rgba(245, 158, 11, 0.2);
+        }
+
+        body.theme-HYPER-DARK {
+          --accent: #00fff7;
+          --accent-rgb: 0, 255, 247;
+          --bg-deep: #020202;
+          --bg-card: rgba(255, 255, 255, 0.01);
+          --glow: rgba(0, 255, 247, 0.25);
+        }
+        
+        body { 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          background-color: var(--bg-deep);
+          color: #f3f4f6;
+          overflow: hidden;
+          margin: 0;
+          -webkit-font-smoothing: antialiased;
+          height: 100dvh;
+          transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+        .shadow-glow { box-shadow: 0 0 30px var(--glow); }
+
+        .glass-panel {
+          background: var(--bg-card);
+          backdrop-filter: blur(40px);
+          -webkit-backdrop-filter: blur(40px);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes scan {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(1000%); }
+        }
+        .scan-line {
+          height: 15vh;
+          background: linear-gradient(to bottom, transparent, var(--glow), transparent);
+          position: absolute;
+          width: 100%;
+          animation: scan 10s linear infinite;
+          pointer-events: none;
+          z-index: 10;
+        }
+        
+        .crt-overlay::after {
+          content: " ";
+          display: block;
+          position: absolute;
+          top: 0; left: 0; bottom: 0; right: 0;
+          background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                      linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+          z-index: 200;
+          background-size: 100% 2px, 3px 100%;
+          pointer-events: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.4.7"
+  }
+}
+</script>
+</head>
+<body class="overflow-hidden crt-overlay h-dvh theme-HYPER-DARK">
+    <div id="root" class="h-full"></div>
+</body>
+</html>
